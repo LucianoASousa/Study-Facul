@@ -1,12 +1,6 @@
 #include <stdio.h>
 #define LENGTH 30
 
-/**
-  Construir um programa que leia uma matriz A de uma dimensão do tipo vetor com 30 elementos
-  do tipo inteiro. Ao final do programa, apresentar a quantidade de valores pares e ímpares
-  existentes na referida matriz.
- */
-
 int main()
 {
   int A[LENGTH];

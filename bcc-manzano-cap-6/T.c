@@ -3,14 +3,6 @@
 #define LENGTH 10
 #define BIG_LENGTH LENGTH * 2
 
-/**
-  Escrever um programa que leia duas matrizes A e B de uma dimensão com dez elementos. A
-  matriz A deve aceitar apenas a entrada de valores divisíveis por 2 e 3, enquanto a matriz B deve
-  aceitar apenas a entrada de valores múltiplos de 5. A entrada das matrizes deve ser validada
-  pelo programa e não pelo usuário. Construir uma matriz C que seja o resultado da junção das
-  matrizes A e B, de modo que contenha 20 elementos. Apresentar os elementos da matriz C.
- */
-
 int main()
 {
   int A[LENGTH];

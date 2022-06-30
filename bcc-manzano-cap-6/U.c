@@ -1,14 +1,6 @@
 #include <stdio.h>
 #define LENGTH 12
 
-/**
-  Elaborar um programa que leia duas matrizes A e B de uma dimensão com 12 elementos. A
-  matriz A deve aceitar apenas a entrada de valores divisíveis por 2 ou 3, enquanto a matriz B
-  deve aceitar apenas a entrada de valores que não sejam múltiplos de 5. A entrada das matrizes deve ser validada pelo programa e não pelo usuário. Construir uma matriz C que seja o
-  resultado da junção das matrizes A e B, de forma que contenha 24 elementos. Apresentar os
-  elementos da matriz C.
- */
-
 int main()
 {
   int A[LENGTH];

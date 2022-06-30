@@ -1,8 +1,6 @@
 #include <stdio.h>
 #define LENGTH 10
 
-// Elaborar um programa que efetue a leitura de dez nomes de pessoas em uma matriz A do tipo vetor e apresente-os em seguida.
-
 int main()
 {
   char nomes[LENGTH][256];

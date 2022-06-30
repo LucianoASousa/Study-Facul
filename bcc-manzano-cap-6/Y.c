@@ -1,11 +1,6 @@
 #include <stdio.h>
 #define LENGTH 15
 
-/**
-  Escrever um programa que leia uma matriz A de uma dimensão com 15 elementos numéricos
-  inteiros. Apresentar o total de elementos pares existentes na matriz.
- */
-
 int main()
 {
   int A[LENGTH];

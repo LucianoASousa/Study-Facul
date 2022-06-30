@@ -3,13 +3,6 @@
 #define LENGTH 5
 #define BIG_LENGTH LENGTH * 3
 
-/**
-  Escrever um programa que leia três matrizes (A, B e C) de uma dimensão do tipo vetor com
-  cinco elementos cada, que sejam do tipo real. Construir uma matriz D, sendo esta o resultado
-  da junção das três matrizes (A, B e C). Desta forma, a matriz D deve ter o triplo de elementos
-  das matrizes A, B e C, ou seja, 15 elementos. Apresentar os elementos da matriz D.
- */
-
 int main()
 {
   int A[LENGTH];

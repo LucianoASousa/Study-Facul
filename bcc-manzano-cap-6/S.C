@@ -3,14 +3,6 @@
 #define LENGTH 6
 #define BIG_LENGTH LENGTH * 2
 
-/**
-  Elaborar um programa que leia duas matrizes A e B de uma dimensão com seis elementos. A
-  matriz A deve aceitar apenas a entrada de valores pares, enquanto a matriz B deve aceitar
-  apenas a entrada de valores ímpares. A entrada das matrizes deve ser validada pelo programa
-  e não pelo usuário. Construir uma matriz C que seja o resultado da junção das matrizes A e B,
-  de modo que a matriz C contenha 12 elementos. Apresentar os elementos da matriz C.
- */
-
 int main()
 {
   int A[LENGTH];

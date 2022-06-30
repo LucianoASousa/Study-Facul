@@ -1,14 +1,6 @@
 #include <stdio.h>
 #define LENGHT 25
 
-/**
-  Escrever um programa que leia 25 elementos (valores reais) para temperaturas em graus
-  Celsius e armazene esses valores em uma matriz A de uma dimensão do tipo vetor. Construir
-  uma matriz B de mesmo tipo e dimensão, em que cada elemento da matriz B deve ser a
-  conversão da temperatura em graus Fahrenheit do elemento correspondente da matriz A.
-  Apresentar os elementos das matrizes A e B.
- */
-
 int main()
 {
   float A[LENGHT];

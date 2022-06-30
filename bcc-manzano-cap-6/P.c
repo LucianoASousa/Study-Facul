@@ -1,13 +1,6 @@
 #include <stdio.h>
 #define LENGHT 12
 
-/**
-  Elaborar um programa que leia 12 elementos inteiros para uma matriz A de uma dimensão do
-  tipo vetor. Construir uma matriz B de mesmo tipo e dimensão, observando a seguinte lei de
-  formação: "todo elemento da matriz A que for ímpar deve ser multiplicado por 2; caso contrário,
-  o elemento da matriz A deve permanecer constante". Apresentar os elementos da matriz B.
- */
-
 int main()
 {
   int A[LENGHT];
