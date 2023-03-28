@@ -9,28 +9,25 @@ anterior sucessivamente até o infinito, se a sequência não for interrompida. 
 exercício as variáveis ATUAL, ANTERIOR e PRÓXIMO.
 */
 
-int Fibonacci()
+int Fibonacci(int termo)
 {
     int ATUAL, ANTERIOR, PROXIMO;
     ATUAL = 1;
-    ANTERIOR = 1;
+    ANTERIOR = 0;
     PROXIMO = ATUAL + ANTERIOR;
-
-    printf("%d\n", ANTERIOR);
-    printf("%d\n", ATUAL);
-    printf("%d\n", PROXIMO);
-
-    for (int i = 0; i < 12; i++)
+    for (int i = 0; i < termo; i++)
     {
         ATUAL = ANTERIOR;
         ANTERIOR = PROXIMO;
+        printf("%d\n", ATUAL);
         PROXIMO = ATUAL + ANTERIOR;
-        printf("%d\n", PROXIMO);
+        
     }
 }
 
 int main()
-{
-    Fibonacci();
+{   int a;
+    scanf("%d",&a);
+    Fibonacci(a);
     return 0;
 };
