@@ -6,40 +6,34 @@
 #define FALSE 0
 #define INFINITY INT_MAX
 
-typedef struct SVertice
-{
-    int dado;
-    struct SVertice *next;
-    struct SListaConexoes *listaConexoes;
-    _Bool visitado;
-    int distancia;
-} TVertice;
-
-typedef struct SListaConexoes
-{
+typedef struct SListaConexoes {
     struct SVertice *vertice;
     struct SListaConexoes *next;
     float distancia;
 } TListasConexoes;
+
+typedef struct SVertice {
+    int dado;
+    struct SVertice *next;
+    TListasConexoes *listaConexoes;
+    _Bool visitado;
+    int distancia;
+} TVertice;
+
 TVertice *inicio = NULL;
 TVertice *fim;
 
-TVertice *buscarVertice(int key)
-{
+TVertice *buscarVertice(int key) {
     TVertice *ultimo = inicio;
-
-    while (ultimo != NULL)
-    {
+    while (ultimo != NULL) {
         if (ultimo->dado == key)
             return ultimo;
         ultimo = ultimo->next;
     }
-
     return NULL;
 }
 
-TVertice *adicionarVertice(int info)
-{
+TVertice *adicionarVertice(int info) {
     TVertice *novo;
 
     novo = buscarVertice(info);
@@ -47,16 +41,19 @@ TVertice *adicionarVertice(int info)
         return novo;
 
     novo = malloc(sizeof(TVertice));
+    if (novo == NULL) {
+        fprintf(stderr, "Erro ao alocar memória para o vértice.\n");
+        exit(EXIT_FAILURE);
+    }
+
     novo->dado = info;
     novo->next = NULL;
     novo->listaConexoes = NULL;
     novo->visitado = FALSE;
-    if (inicio == NULL)
-    {
+
+    if (inicio == NULL) {
         inicio = novo;
-    }
-    else
-    {
+    } else {
         fim->next = novo;
     }
 
@@ -64,43 +61,40 @@ TVertice *adicionarVertice(int info)
     return novo;
 }
 
-void conectarVertices(int info, int info2, float distancia)
-{
+void conectarVertices(int info, int info2, float distancia) {
     TVertice *verticeOrigem, *verticeDestino;
 
     verticeOrigem = adicionarVertice(info);
     verticeDestino = adicionarVertice(info2);
 
     TListasConexoes *conexao = malloc(sizeof(TListasConexoes));
+    if (conexao == NULL) {
+        fprintf(stderr, "Erro ao alocar memória para a conexão.\n");
+        exit(EXIT_FAILURE);
+    }
+
     conexao->vertice = verticeDestino;
     conexao->distancia = distancia;
     conexao->next = NULL;
 
-    if (verticeOrigem->listaConexoes == NULL)
-    {
+    if (verticeOrigem->listaConexoes == NULL) {
         verticeOrigem->listaConexoes = conexao;
-    }
-    else
-    {
+    } else {
         TListasConexoes *ultimaConexao = verticeOrigem->listaConexoes;
-        while (ultimaConexao->next != NULL)
-        {
+        while (ultimaConexao->next != NULL) {
             ultimaConexao = ultimaConexao->next;
         }
         ultimaConexao->next = conexao;
     }
 }
 
-TVertice *encontrarVerticeNaoVisitadoComMenorDistancia()
-{
+TVertice *encontrarVerticeNaoVisitadoComMenorDistancia() {
     TVertice *atual = inicio;
     TVertice *verticeMenorDistancia = NULL;
     int menorDistancia = INFINITY;
 
-    while (atual != NULL)
-    {
-        if (!atual->visitado && atual->distancia < menorDistancia)
-        {
+    while (atual != NULL) {
+        if (!atual->visitado && atual->distancia < menorDistancia) {
             menorDistancia = atual->distancia;
             verticeMenorDistancia = atual;
         }
@@ -110,17 +104,14 @@ TVertice *encontrarVerticeNaoVisitadoComMenorDistancia()
     return verticeMenorDistancia;
 }
 
-void verificarVizinhosMenorDistancia(TVertice *vertice)
-{
+void verificarVizinhosMenorDistancia(TVertice *vertice) {
     TListasConexoes *listaConexoes = vertice->listaConexoes;
 
-    while (listaConexoes != NULL)
-    {
+    while (listaConexoes != NULL) {
         TVertice *vizinho = listaConexoes->vertice;
         float novaDistancia = vertice->distancia + listaConexoes->distancia;
 
-        if (novaDistancia < vizinho->distancia)
-        {
+        if (novaDistancia < vizinho->distancia) {
             vizinho->distancia = novaDistancia;
         }
 
@@ -128,16 +119,13 @@ void verificarVizinhosMenorDistancia(TVertice *vertice)
     }
 }
 
-void dijkstra(TVertice *verticeInicial)
-{
+void dijkstra(TVertice *verticeInicial) {
     verticeInicial->distancia = 0;
 
-    while (1)
-    {
+    while (1) {
         TVertice *atual = encontrarVerticeNaoVisitadoComMenorDistancia();
 
-        if (atual == NULL)
-        {
+        if (atual == NULL) {
             break;
         }
 
@@ -146,36 +134,29 @@ void dijkstra(TVertice *verticeInicial)
     }
 }
 
-void imprimirDistancias()
-{
+void imprimirDistancias() {
     TVertice *vertice = inicio;
 
-    while (vertice != NULL)
-    {
+    while (vertice != NULL) {
         printf("Distância do vértice %d: %d\n", vertice->dado, vertice->distancia);
         vertice = vertice->next;
     }
 }
 
-int main()
-{
+int main() {
     int leitura, leitura2;
     float distancia;
 
-    while (1)
-    {
-        printf("Infome um ou dois número (ou zero para encerrar): ");
+    while (1) {
+        printf("Informe um ou dois números (ou zero para encerrar): ");
         scanf("%d %d", &leitura, &leitura2);
 
         if (leitura == 0)
             break;
 
-        if (leitura2 == 0)
-        {
+        if (leitura2 == 0) {
             adicionarVertice(leitura);
-        }
-        else
-        {
+        } else {
             printf("Informe a distância entre %d e %d: ", leitura, leitura2);
             scanf("%f", &distancia);
             conectarVertices(leitura, leitura2, distancia);
